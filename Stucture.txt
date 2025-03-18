@@ -1,0 +1,73 @@
+src/
+├── Api/
+│   ├── Controllers/
+│   │   └── AuthController.cs         # Controller สำหรับ Authentication (Login/Register)
+│   ├── Program.cs                    # Entry point สำหรับโปรเจค
+│   ├── appsettings.json              # เก็บค่า Configuration เช่น JwtSettings
+│   └── appsettings.Development.json  # ค่าการตั้งค่าสำหรับ Development Environment
+├── Application/
+│   ├── DTOs/
+│   │   ├── RegisterRequest.cs        # DTO สำหรับการลงทะเบียน
+│   │   ├── LoginRequest.cs           # DTO สำหรับการล็อกอิน
+│   │   ├── RefreshTokenRequest.cs    # DTO สำหรับการ Refresh Token
+│   │   └── LoginResponse.cs          # DTO สำหรับผลลัพธ์ของการล็อกอิน
+│   ├── Interfaces/
+│   │   ├── IUserWorkflow.cs          # Interface สำหรับ Workflow
+│   │   ├── IUserRepository.cs        # Interface สำหรับ User Repository
+│   │   ├── IRoleRepository.cs        # Interface สำหรับ Role Repository
+│   │   ├── IJwtTokenGenerator.cs     # Interface สำหรับการสร้าง JWT
+│   │   ├── IPasswordHasher.cs        # Interface สำหรับการ Hash รหัสผ่าน
+│   │   └── IUnitOfWork.cs            # Interface สำหรับ Unit of Work
+│   ├── Workflows/
+│   │   └── UserWorkflow.cs           # Workflow Logic สำหรับ User
+├── Domain/
+│   ├── Entities/
+│   │   ├── User.cs                   # Entity สำหรับ User
+│   │   ├── Role.cs                   # Entity สำหรับ Role
+│   │   └── Permission.cs             # Entity สำหรับ Permissions
+│   ├── Models/
+│   │   └── Result.cs                 # Model สำหรับผลลัพธ์
+│   └── [ไม่มี Services/ แล้ว]
+├── Infrastructure/
+│   ├── Data/
+│   │   ├── ApplicationDbContext.cs   # EF Core DbContext
+│   │   └── Configurations/
+│   │       ├── UserConfiguration.cs  # Fluent API สำหรับ User
+│   │       ├── RoleConfiguration.cs  # Fluent API สำหรับ Role
+│   │       └── PermissionConfiguration.cs # Fluent API สำหรับ Permissions
+│   ├── Repositories/
+│   │   ├── UserRepository.cs         # Implementation ของ User Repository
+│   │   └── RoleRepository.cs         # Implementation ของ Role Repository
+│   ├── Services/                     # ย้าย Services มาจาก Domain
+│   │   ├── JwtTokenGenerator.cs      # Token Generator Service
+│   │   └── PasswordHasher.cs         # Password Hashing Utility
+│   ├── UnitOfWork/
+│   │   ├── Transaction.cs            # Implementation สำหรับ Transaction
+│   │   └── UnitOfWork.cs             # Implementation ของ Unit of Work
+│   └── Utilities/
+│       └── JwtSettings.cs            # การตั้งค่าสำหรับ JWT
+└── Tests/
+    ├── UnitTests/
+    │   ├── Workflows/
+    │   │   └── UserWorkflowTests.cs  # Unit Tests สำหรับ User Workflow
+    └── IntegrationTests/
+        └── AuthControllerTests.cs    # Integration Tests สำหรับ Auth APIs
+
+
+---------------------------------------
+
+
+สรุปลำดับการพัฒนา
+เริ่มที่ Domain Layer: สร้าง Entities และ Models ที่เป็น Core
+ต่อที่ Application Layer: เขียน Workflow และ Interface
+สร้าง Infrastructure Layer: จัดการฐานข้อมูลและ IO
+สุดท้ายพัฒนา Api Layer: สร้าง Controllers และ DTOs
+
+
+------------------
+run migrations ef
+dotnet ef migrations list --project src/Infrastructure --startup-project src/Api
+dotnet ef migrations add InitialMigration --project src/Infrastructure --startup-project src/Api -- --isDesignTime
+dotnet ef migrations remove --project src/Infrastructure --startup-project src/Api
+dotnet ef database update --project src/Infrastructure --startup-project src/Api -- --isDesignTime
+

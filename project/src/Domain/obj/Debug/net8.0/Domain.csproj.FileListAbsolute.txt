@@ -1,0 +1,11 @@
+D:\personal\git\arm-web-demo\project\src\Domain\bin\Debug\net8.0\Domain.deps.json
+D:\personal\git\arm-web-demo\project\src\Domain\bin\Debug\net8.0\Domain.dll
+D:\personal\git\arm-web-demo\project\src\Domain\bin\Debug\net8.0\Domain.pdb
+D:\personal\git\arm-web-demo\project\src\Domain\obj\Debug\net8.0\Domain.GeneratedMSBuildEditorConfig.editorconfig
+D:\personal\git\arm-web-demo\project\src\Domain\obj\Debug\net8.0\Domain.AssemblyInfoInputs.cache
+D:\personal\git\arm-web-demo\project\src\Domain\obj\Debug\net8.0\Domain.AssemblyInfo.cs
+D:\personal\git\arm-web-demo\project\src\Domain\obj\Debug\net8.0\Domain.csproj.CoreCompileInputs.cache
+D:\personal\git\arm-web-demo\project\src\Domain\obj\Debug\net8.0\Domain.dll
+D:\personal\git\arm-web-demo\project\src\Domain\obj\Debug\net8.0\refint\Domain.dll
+D:\personal\git\arm-web-demo\project\src\Domain\obj\Debug\net8.0\Domain.pdb
+D:\personal\git\arm-web-demo\project\src\Domain\obj\Debug\net8.0\ref\Domain.dll
